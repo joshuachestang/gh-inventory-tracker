@@ -1,0 +1,35 @@
+<div id="signup-page">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span4 offset4" id="signup-box">
+        <div class="text-center">
+          <div class="great-heights-logo">
+          		<%= image_tag("great-heights-logo.jpg", :id => "logo-gh") %>
+	          <!-- <h3>Great Heights Inventory Tracker</h3> -->
+          </div>
+        </div>
+        <div class="page-bg">
+          <%= simple_form_for(@user, as: :user, url: session_path(:user)) do |f| %>
+            <h2 class="no-top-margin">Login</h2>
+            <%= f.error_notification %>
+
+            <%= f.input :email, autofocus: true, required: true, label: false, input_html: {class: "span12"}, placeholder: "email address" %>
+            <%= f.input :password, :required => true, label: false, input_html: {class: "span12"}, placeholder: "password" %>
+           
+           <div class="span12" style="margin-left:0px;">
+            <button type="submit" id="login-button" class="btn btn-link btn-large center">
+              submit <i class='icon-lock'></i>
+            </button>
+          </div>
+
+            <div class="clearfix"></div>
+            <hr/>
+            <%= render "devise/shared/links" %>
+          <% end %>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</div>

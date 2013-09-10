@@ -1,0 +1,55 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require metro-bootstrap
+ *= require inventory_checks
+ 	
+ *= require_self
+
+ */
+
+div#signup-box{
+	padding: 30px;
+	background-color: #0B5FA5;
+	margin-top: 50px;
+}
+
+div.great-heights-logo span{
+	font-size:20px;
+}
+
+div.great-heights-logo img#logo-gh{
+	margin-left:20px;
+	margin-bottom:20px;
+}
+
+div.span12 {
+	color:black;
+}
+
+h1#title{
+	margin-left:20px;
+	position: fixed;
+
+}
+
+#methadone-main-table{
+	margin-left:20px;
+	overflow-x: scroll;
+	margin-top: 80px;
+}
+
+div.table-data{
+
+}
+
+div.table-data tr td{
+	margin:0px 20px 0px 20px;
+}

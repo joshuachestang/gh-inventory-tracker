@@ -1,0 +1,94 @@
+<h1 id="title">Methadone Inventory Logs</h1>
+<table id="methadone-main-table" class="table table-striped table-bordered table-condensed">
+  <tr>
+    <th>User</th>
+    <!-- <th>Beginning or Ending Shift?</th> -->
+    <th>Time Created</th>
+
+    <th>40mg Lot #</th>
+    <th>40mg Unopened Box Count - (6 bottle per box)</th>
+    <th>40mg Unopened Bottle Count - (100 Tablets per bottle)</th>
+    <th>Current Open Bottle - 40mg Tablet Count - (Tablets left in open bottle)</th>
+    <th>Total 40mg Tablet Count in Lot</th>
+    <th>Total 40mg to date</th>
+
+    <th>5mg Lot #</th>
+    <th>5mg Unopened Box Count - (100 Tablets per bottle)</th>
+    <th>5mg Unopened Bottle Count - (100 Tablets per bottle)</th>
+    <th>Current Open Bottle - 5mg Tablet Count - (Tablets left in open bottle)</th>
+    <th>Total 5mg Tablet Count in Lot</th>
+    <th>Total 5mg to date</th>
+
+    <th>Total Tablets To Date (40mg Tablets + 5mg Tablets)</th>
+  </tr>
+<div class="table-data">
+  <% @inventory_checks.each do |inventory_check| %>
+    <tr>
+      <td><%= inventory_check.user.name %></td>
+      
+      <td><%= inventory_check.created_at.strftime("%B %d - %I:%M %p") %></td>
+      
+      <td><%= inventory_check.forty_mg_lot_number %></td>
+      <td><%= inventory_check.forty_mg_box_inventory %></td>
+      <td><%= inventory_check.forty_mg_bottle_inventory %></td>
+      <td><%= inventory_check.forty_mg_open_bottle_inventory %></td>
+      <td><%= inventory_check.forty_mg_tablet_count %></td>
+      <td><%= inventory_check.forty_mg_total_inventory %></td>
+
+      <td><%= inventory_check.five_mg_lot_number %></td>
+      <td><%= inventory_check.five_mg_box_inventory %></td>
+      <td><%= inventory_check.five_mg_bottle_inventory %></td>
+      <td><%= inventory_check.five_mg_open_bottle_inventory %></td>
+      <td><%= inventory_check.five_mg_tablet_count %></td>
+      <td><%= inventory_check.five_mg_total_inventory %></td>
+
+      <td><%= inventory_check.total_inventory_count %></td>
+    </tr>
+  <% end %>
+</div>
+  <%= simple_form_for(@inventory_check) do |f| %>
+    <% if @inventory_check.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@inventory_check.errors.count, "error") %> prohibited this inventory check from being saved:</h2>
+
+        <ul>
+        <% @inventory_check.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div id="inventory_check_inputs">
+      <tr>
+        <td><%= f.input :user_id, disabled: true, placeholder: current_user.id %></td>
+        
+        <td><%= f.input :shift, :collection => ["AM", "PM"], disabled: true %></td>
+
+        <td><%= f.input :forty_mg_lot_number %></td>
+        <td><%= f.input :forty_mg_box_inventory %></td>
+        <td><%= f.input :forty_mg_bottle_inventory %></td>
+        <td><%= f.input :forty_mg_open_bottle_inventory %></td>
+        <td><%= f.input :forty_mg_tablet_count, disabled: true %></td>
+        <td><%= f.input :forty_mg_total_inventory, disabled: true %></td>
+
+        <td><%= f.input :five_mg_lot_number %></td>
+        <td><%= f.input :five_mg_box_inventory %></td>
+        <td><%= f.input :five_mg_bottle_inventory %></td>
+        <td><%= f.input :five_mg_open_bottle_inventory %></td>
+        <td><%= f.input :five_mg_tablet_count, disabled: true %></td>
+        <td><%= f.input :five_mg_total_inventory, disabled: true %></td>
+
+        <td><%= f.input :total_inventory_count, disabled: true %></td>
+        <td>
+          <%= f.submit 'Save', :class => "btn btn-primary", :hidefocus => true %>
+        </td>
+      </tr>
+    </div>
+</table>
+    
+<% end %>
+
+  <script type="text/javascript">
+  $('label').hide();
+  </script>
+
