@@ -3,7 +3,8 @@ class InventoryCheck < ActiveRecord::Base
 	:forty_mg_box_inventory, :forty_mg_bottle_inventory, :forty_mg_open_bottle_inventory, 
 	:forty_mg_tablet_count, :forty_mg_total_inventory, :five_mg_lot_number, 
 	:five_mg_box_inventory, :five_mg_bottle_inventory, :five_mg_open_bottle_inventory, 
-	:five_mg_tablet_count, :five_mg_total_inventory, :total_inventory_count
+	:five_mg_tablet_count, :five_mg_total_inventory, :total_inventory_count, 
+	:total_five_milligram_count, :total_forty_milligram_count
 
 	before_validation :sum_milligram_totals
 

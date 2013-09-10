@@ -7,16 +7,18 @@ class InventoryChecks < ActiveRecord::Migration
     	t.string :forty_mg_lot_number
     	t.integer :forty_mg_box_inventory
     	t.integer :forty_mg_bottle_inventory
-    	t.integer :forty_mg_open_bottle_inventory
+    	t.decimal :forty_mg_open_bottle_inventory, :precision => 8, :scale => 2
     	t.integer :forty_mg_tablet_count
     	t.integer :forty_mg_total_inventory
     	t.string :five_mg_lot_number
     	t.integer :five_mg_box_inventory
     	t.integer :five_mg_bottle_inventory
-    	t.integer :five_mg_open_bottle_inventory
+    	t.decimal :five_mg_open_bottle_inventory, :precision => 8, :scale => 2
     	t.integer :five_mg_tablet_count
     	t.integer :five_mg_total_inventory
     	t.integer :total_inventory_count
+        t.decimal :total_forty_milligram_count
+        t.decimal :total_five_milligram_count
 	
       t.timestamps
     end

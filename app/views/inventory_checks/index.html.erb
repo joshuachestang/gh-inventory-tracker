@@ -3,20 +3,23 @@
   <tr>
     <th>User</th>
     <!-- <th>Beginning or Ending Shift?</th> -->
-    <th>Time Created</th>
+    <th>Created At</th>
 
     <th>40mg Lot #</th>
     <th>40mg Unopened Box Count - (6 bottle per box)</th>
     <th>40mg Unopened Bottle Count - (100 Tablets per bottle)</th>
     <th>Current Open Bottle - 40mg Tablet Count - (Tablets left in open bottle)</th>
     <th>Total 40mg Tablet Count in Lot</th>
+    <th>Total 40mg Milligrams</th>
     <th>Total 40mg to date</th>
+
 
     <th>5mg Lot #</th>
     <th>5mg Unopened Box Count - (100 Tablets per bottle)</th>
     <th>5mg Unopened Bottle Count - (100 Tablets per bottle)</th>
     <th>Current Open Bottle - 5mg Tablet Count - (Tablets left in open bottle)</th>
     <th>Total 5mg Tablet Count in Lot</th>
+    <th>Total 5mg Milligrams</th>
     <th>Total 5mg to date</th>
 
     <th>Total Tablets To Date (40mg Tablets + 5mg Tablets)</th>
@@ -32,14 +35,16 @@
       <td><%= inventory_check.forty_mg_box_inventory %></td>
       <td><%= inventory_check.forty_mg_bottle_inventory %></td>
       <td><%= inventory_check.forty_mg_open_bottle_inventory %></td>
-      <td><%= inventory_check.forty_mg_tablet_count %></td>
+      <td><%= number_with_precision(inventory_check.forty_mg_tablet_count, :precision => 2) %></td>
+      <td><%= inventory_check.total_forty_milligram_count %></td>
       <td><%= inventory_check.forty_mg_total_inventory %></td>
 
       <td><%= inventory_check.five_mg_lot_number %></td>
       <td><%= inventory_check.five_mg_box_inventory %></td>
       <td><%= inventory_check.five_mg_bottle_inventory %></td>
       <td><%= inventory_check.five_mg_open_bottle_inventory %></td>
-      <td><%= inventory_check.five_mg_tablet_count %></td>
+      <td><%= number_with_precision(inventory_check.five_mg_tablet_count, :precision => 2) %></td>
+      <td><%= inventory_check.total_five_milligram_count %></td>
       <td><%= inventory_check.five_mg_total_inventory %></td>
 
       <td><%= inventory_check.total_inventory_count %></td>
@@ -67,17 +72,18 @@
         <td><%= f.input :forty_mg_lot_number %></td>
         <td><%= f.input :forty_mg_box_inventory %></td>
         <td><%= f.input :forty_mg_bottle_inventory %></td>
-        <td><%= f.input :forty_mg_open_bottle_inventory %></td>
+        <td><%= f.input :forty_mg_open_bottle_inventory, as: :float %></td>
         <td><%= f.input :forty_mg_tablet_count, disabled: true %></td>
+        <td><%= f.input :total_forty_milligram_count, disable: true %></td>
         <td><%= f.input :forty_mg_total_inventory, disabled: true %></td>
 
         <td><%= f.input :five_mg_lot_number %></td>
         <td><%= f.input :five_mg_box_inventory %></td>
         <td><%= f.input :five_mg_bottle_inventory %></td>
-        <td><%= f.input :five_mg_open_bottle_inventory %></td>
+        <td><%= f.input :five_mg_open_bottle_inventory, as: :float %></td>
         <td><%= f.input :five_mg_tablet_count, disabled: true %></td>
         <td><%= f.input :five_mg_total_inventory, disabled: true %></td>
-
+        <td><%= f.input :total_five_milligram_count, disabled: true %></td>
         <td><%= f.input :total_inventory_count, disabled: true %></td>
         <td>
           <%= f.submit 'Save', :class => "btn btn-primary", :hidefocus => true %>
