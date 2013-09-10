@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Log ID</Data></Cell>
+        <Cell><Data ss:Type="String">Created By</Data></Cell>
+        <Cell><Data ss:Type="String">Created At</Data></Cell>
+        <Cell><Data ss:Type="String">40mg Lot #</Data></Cell>
+        <Cell><Data ss:Type="String">40mg Unopened Box Count - (6 bottle per box)</Data></Cell>
+        <Cell><Data ss:Type="String">40mg Unopened Bottle Count - (100 Tablets per bottle)</Data></Cell>
+        <Cell><Data ss:Type="String">Current Open Bottle - 40mg Tablet Count - (Tablets left in open bottle)</Data></Cell>
+        <Cell><Data ss:Type="String">Total 40mg Tablet Count in Lot</Data></Cell>
+        <Cell><Data ss:Type="String">Total 40mg Milligrams</Data></Cell>
+        <Cell><Data ss:Type="String">Total 40mg to Date</Data></Cell>
+
+        <Cell><Data ss:Type="String">5mg Lot #</Data></Cell>
+        <Cell><Data ss:Type="String">5mg Unopened Box Count - (100 Tablets per bottle)</Data></Cell>
+        <Cell><Data ss:Type="String">5mg Unopened Bottle Count - (100 Tablets per bottle)</Data></Cell>
+        <Cell><Data ss:Type="String">Current Open Bottle - 5mg Tablet Count - (Tablets left in open bottle)</Data></Cell>
+        <Cell><Data ss:Type="String">Total 5mg Tablet Count in Lot</Data></Cell>
+        <Cell><Data ss:Type="String">Total 5mg Milligrams</Data></Cell>
+        <Cell><Data ss:Type="String">Total 5mg to Date</Data></Cell>
+
+        <Cell><Data ss:Type="String">Total Tablets To Date (40mg Tablets + 5mg Tablets)</Data></Cell>
+      </Row>
+    <% @inventory_checks.each do |inventory_check| %>
+      <Row>
+        <Cell><Data ss:Type="String"><%= inventory_check.id %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.user.name %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.created_at.strftime("%B %d - %I:%M %p") %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.forty_mg_lot_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.forty_mg_box_inventory %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.forty_mg_bottle_inventory %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.forty_mg_open_bottle_inventory %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.forty_mg_tablet_count %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.total_forty_milligram_count %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.forty_mg_total_inventory %></Data></Cell>
+
+        <Cell><Data ss:Type="String"><%= inventory_check.five_mg_lot_number %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.five_mg_box_inventory %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.five_mg_bottle_inventory %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.five_mg_open_bottle_inventory %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.five_mg_tablet_count %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.total_five_milligram_count %></Data></Cell>
+        <Cell><Data ss:Type="String"><%= inventory_check.five_mg_total_inventory %></Data></Cell>
+
+        <Cell><Data ss:Type="String"><%= inventory_check.total_inventory_count %></Data></Cell>
+
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

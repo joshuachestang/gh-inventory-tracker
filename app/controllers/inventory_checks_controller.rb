@@ -7,6 +7,11 @@ class InventoryChecksController < ApplicationController
   def index
     @inventory_checks = InventoryCheck.all
     @inventory_check = InventoryCheck.new
+    respond_to do |format|
+      format.html
+      format.csv { send_data InventoryCheck.to_csv }
+      format.xls { send_data InventoryCheck.to_csv(col_sep: "\t") }
+    end
   end
 
   # GET /inventory_checks/1
