@@ -22,6 +22,7 @@ group :assets do
   gem 'compass-h5bp'
   gem "therubyracer"
   gem "less-rails"
+  gem 'less-rails-bootstrap'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby

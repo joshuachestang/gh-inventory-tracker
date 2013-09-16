@@ -1,20 +1,15 @@
 ActiveAdmin.register InventoryCheck do
   index do                            
-    column :email                     
-    column :current_sign_in_at        
-    column :last_sign_in_at           
-    column :sign_in_count             
+    column :user_id 
+    column :created_at 
+    column :forty_mg_lot_number 
+    column :five_mg_lot_number
+    column :forty_mg_total_inventory
+    column :five_mg_total_inventory
+    column :total_inventory_count                            
     default_actions                   
   end                                 
 
-  filter :email                       
-
-  form do |f|                         
-    f.inputs "User Details" do       
-      f.input :email                  
-      f.input :password               
-      f.input :password_confirmation  
-    end                               
-    f.actions                         
-  end   
+  filter :user_id                      
+ 
 end
