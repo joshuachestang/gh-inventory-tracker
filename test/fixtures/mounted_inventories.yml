@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  lot_number: MyString
+  total_mg: 1
+
+two:
+  lot_number: MyString
+  total_mg: 1

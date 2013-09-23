@@ -1,4 +1,7 @@
 GhInventoryTracker::Application.routes.draw do
+  resources :mounted_inventories
+
+
   root :to => "inventory_checks#index"
   
   devise_for :admin_users, ActiveAdmin::Devise.config

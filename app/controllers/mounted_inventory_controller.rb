@@ -1,0 +1,2 @@
+class MountedInventoryController < ApplicationController
+end

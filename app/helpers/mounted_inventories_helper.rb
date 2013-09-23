@@ -1,0 +1,2 @@
+module MountedInventoriesHelper
+end

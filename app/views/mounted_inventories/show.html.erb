@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Lot number:</b>
+  <%= @mounted_inventory.lot_number %>
+</p>
+
+<p>
+  <b>Total mg:</b>
+  <%= @mounted_inventory.total_mg %>
+</p>
+
+
+<%= link_to 'Edit', edit_mounted_inventory_path(@mounted_inventory) %> |
+<%= link_to 'Back', mounted_inventories_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@mounted_inventory) do |f| %>
+  <% if @mounted_inventory.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@mounted_inventory.errors.count, "error") %> prohibited this mounted_inventory from being saved:</h2>
+
+      <ul>
+      <% @mounted_inventory.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :lot_number %><br />
+    <%= f.text_field :lot_number %>
+  </div>
+  <div class="field">
+    <%= f.label :total_mg %><br />
+    <%= f.number_field :total_mg %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

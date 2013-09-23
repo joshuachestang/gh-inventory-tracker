@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130910004733) do
+ActiveRecord::Schema.define(:version => 20130918163021) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -67,6 +67,13 @@ ActiveRecord::Schema.define(:version => 20130910004733) do
     t.decimal  "total_five_milligram_count",     :precision => 8, :scale => 2
     t.datetime "created_at",                                                   :null => false
     t.datetime "updated_at",                                                   :null => false
+  end
+
+  create_table "mounted_inventories", :force => true do |t|
+    t.string   "lot_number"
+    t.integer  "total_mg"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|
