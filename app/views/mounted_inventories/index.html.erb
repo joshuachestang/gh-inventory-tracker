@@ -1,25 +1,53 @@
-<h1>Listing mounted_inventories</h1>
+<h1><%= link_to "Mounted Inventory", mounted_inventories_path, :style => "text-decoration:underline; color:black;" %> / <%= link_to "Current Inventory", inventory_checks_path, :style => "color:black;" %></h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
   <tr>
     <th>Lot number</th>
     <th>Total mg</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>User</th>
+    <th>Creation Date</th>
   </tr>
 
-<% @mounted_inventories.each do |mounted_inventory| %>
-  <tr>
-    <td><%= mounted_inventory.lot_number %></td>
-    <td><%= mounted_inventory.total_mg %></td>
-    <td><%= link_to 'Show', mounted_inventory %></td>
-    <td><%= link_to 'Edit', edit_mounted_inventory_path(mounted_inventory) %></td>
-    <td><%= link_to 'Destroy', mounted_inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <% @mounted_inventories.each do |mounted_inventory| %>
+    <tr>
+      <td><%= mounted_inventory.lot_number %></td>
+      <td><%= mounted_inventory.total_mg %></td>
+      <td><%= mounted_inventory.user.last_name %></td>
+      <td><%= mounted_inventory.created_at.strftime("%B %d - %I:%M %p") %></td>
+      <!-- td><%#= link_to 'Show', mounted_inventory %></td>
+      <td><%#= link_to 'Edit', edit_mounted_inventory_path(mounted_inventory) %></td>
+      <td><%#= link_to 'Destroy', mounted_inventory, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+    </tr>
+  <% end %>
+  <%= simple_form_for(@mounted_inventory) do |f| %>
+    <% if @mounted_inventory.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@mounted_inventory.errors.count, "error") %> prohibited this inventory check from being saved:</h2>
+
+        <ul>
+        <% @mounted_inventory.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div id="mounted_inventory_inputs">
+      <tr>
+        
+        <td><%= f.input :lot_number %></td>
+        <td><%= f.input :total_mg %></td>
+        <td><%= f.input :user_id, disabled: true, placeholder: current_user.name %></td>
+        <!-- <td><%#= f.input :created_at, disabled: true, placeholder: Time.now %></td> -->
+        <td><%= f.submit 'Save', :class => "btn btn-primary", :hidefocus => true %></td>
+      </tr>
+    </div>
+  <% end %>
 </table>
 
 <br />
 
 <%= link_to 'New Mounted inventory', new_mounted_inventory_path %>
+
+<script type="text/javascript">
+  $('label').hide();
+  </script>

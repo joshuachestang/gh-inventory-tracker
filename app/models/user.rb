@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :inventory_checks
-
+  has_many :mounted_inventories
+  
   def name
   	self.first_name + " " + self.last_name
   end
